@@ -1,3 +1,6 @@
+## [0.0.5] - 2025-06-20
+* Updated dart version adn flutter version
+* Added functionality for horizontal support
 ## [0.0.4] - 2018-08-30
 * Update dart constraints
 
