@@ -19,6 +19,7 @@ class SideHeaderListView extends StatefulWidget {
   final IndexedWidgetBuilder itemBuilder;
   final IndexedWidgetBuilder? dividerBuilder;
   final EdgeInsets? padding;
+  final MainAxisAlignment horizontalAxisAlignment;
   final HasSameHeader hasSameHeader;
   final itemExtend;
   final bool isHorizontal;
@@ -31,6 +32,7 @@ class SideHeaderListView extends StatefulWidget {
     required this.itemBuilder,
     this.dividerBuilder,
     required this.hasSameHeader,
+    this.horizontalAxisAlignment = MainAxisAlignment.start,
     this.padding,
     this.isHorizontal = true,
   }) : super(key: key);
@@ -65,14 +67,16 @@ class _SideHeaderListViewState extends State<SideHeaderListView> {
               itemBuilder: (BuildContext context, int index) {
                 final itemColumn = new Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: widget.horizontalAxisAlignment,
                   children: <Widget>[
-                    new FittedBox(
+                    new Flexible(
                       child: new Opacity(
                         opacity: _shouldShowHeader(index) ? 1.0 : 0.0,
                         child: widget.headerBuilder(context, index),
                       ),
                     ),
-                    new Flexible(child: widget.itemBuilder(context, index))
+                    new Flexible(
+                        flex: 0, child: widget.itemBuilder(context, index))
                   ],
                 );
 
