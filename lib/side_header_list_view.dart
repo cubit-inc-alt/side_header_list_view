@@ -23,6 +23,8 @@ class SideHeaderListView extends StatefulWidget {
   final HasSameHeader hasSameHeader;
   final itemExtend;
   final bool isHorizontal;
+  final ScrollController? controller;
+  final bool? disableScroll;
 
   SideHeaderListView({
     Key? key,
@@ -35,6 +37,8 @@ class SideHeaderListView extends StatefulWidget {
     this.horizontalAxisAlignment = MainAxisAlignment.start,
     this.padding,
     this.isHorizontal = true,
+    this.controller,
+    this.disableScroll,
   }) : super(key: key);
 
   @override
@@ -43,6 +47,41 @@ class SideHeaderListView extends StatefulWidget {
 
 class _SideHeaderListViewState extends State<SideHeaderListView> {
   int currentPosition = 0;
+  ScrollController? _internalController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    // If external controller is provided, add listener to it
+    if (widget.controller != null) {
+      widget.controller!.addListener(_onScroll);
+    }
+  }
+
+  @override
+  void dispose() {
+    // Remove listener from external controller if it exists
+    if (widget.controller != null) {
+      widget.controller!.removeListener(_onScroll);
+    }
+    // Dispose internal controller if it exists
+    _internalController?.dispose();
+    super.dispose();
+  }
+
+  void _onScroll() {
+    if (widget.controller != null) {
+      var pixels = widget.controller!.offset;
+      var newPosition = (pixels / widget.itemExtend).floor();
+
+      if (newPosition != currentPosition) {
+        setState(() {
+          currentPosition = newPosition;
+        });
+      }
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +103,9 @@ class _SideHeaderListViewState extends State<SideHeaderListView> {
               itemExtent: widget.itemExtend,
               controller: _getScrollController(),
               scrollDirection: Axis.horizontal,
+              physics: widget.disableScroll == true
+                  ? NeverScrollableScrollPhysics()
+                  : null,
               itemBuilder: (BuildContext context, int index) {
                 final itemColumn = new Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -110,6 +152,9 @@ class _SideHeaderListViewState extends State<SideHeaderListView> {
               itemCount: widget.itemCount,
               itemExtent: widget.itemExtend,
               controller: _getScrollController(),
+              physics: widget.disableScroll == true
+                  ? NeverScrollableScrollPhysics()
+                  : null,
               itemBuilder: (BuildContext context, int index) {
                 final itemRow = new Row(
                   crossAxisAlignment: CrossAxisAlignment.start,
@@ -171,9 +216,14 @@ class _SideHeaderListViewState extends State<SideHeaderListView> {
   }
 
   ScrollController _getScrollController() {
-    var controller = new ScrollController();
-    controller.addListener(() {
-      var pixels = controller.offset;
+    if (widget.controller != null) {
+      return widget.controller!;
+    }
+
+    // Create internal controller if not provided
+    _internalController = new ScrollController();
+    _internalController!.addListener(() {
+      var pixels = _internalController!.offset;
       var newPosition = (pixels / widget.itemExtend).floor();
 
       if (newPosition != currentPosition) {
@@ -182,6 +232,7 @@ class _SideHeaderListViewState extends State<SideHeaderListView> {
         });
       }
     });
-    return controller;
+
+    return _internalController!;
   }
 }
