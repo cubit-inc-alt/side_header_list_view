@@ -3,43 +3,43 @@
   "packages": [
     {
       "name": "characters",
-      "rootUri": "file:///Users/webnapp_03/.pub-cache/hosted/pub.dev/characters-1.4.0",
+      "rootUri": "file:///Users/roshanoscarsah/.pub-cache/hosted/pub.dev/characters-1.4.0",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "collection",
-      "rootUri": "file:///Users/webnapp_03/.pub-cache/hosted/pub.dev/collection-1.19.1",
+      "rootUri": "file:///Users/roshanoscarsah/.pub-cache/hosted/pub.dev/collection-1.19.1",
       "packageUri": "lib/",
       "languageVersion": "3.4"
     },
     {
       "name": "flutter",
-      "rootUri": "file:///Users/webnapp_03/fvm/versions/3.29.3/packages/flutter",
+      "rootUri": "file:///Users/roshanoscarsah/fvm/versions/3.29.3/packages/flutter",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "material_color_utilities",
-      "rootUri": "file:///Users/webnapp_03/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1",
+      "rootUri": "file:///Users/roshanoscarsah/.pub-cache/hosted/pub.dev/material_color_utilities-0.11.1",
       "packageUri": "lib/",
       "languageVersion": "2.17"
     },
     {
       "name": "meta",
-      "rootUri": "file:///Users/webnapp_03/.pub-cache/hosted/pub.dev/meta-1.16.0",
+      "rootUri": "file:///Users/roshanoscarsah/.pub-cache/hosted/pub.dev/meta-1.16.0",
       "packageUri": "lib/",
       "languageVersion": "2.12"
     },
     {
       "name": "sky_engine",
-      "rootUri": "file:///Users/webnapp_03/fvm/versions/3.29.3/bin/cache/pkg/sky_engine",
+      "rootUri": "file:///Users/roshanoscarsah/fvm/versions/3.29.3/bin/cache/pkg/sky_engine",
       "packageUri": "lib/",
       "languageVersion": "3.7"
     },
     {
       "name": "vector_math",
-      "rootUri": "file:///Users/webnapp_03/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
+      "rootUri": "file:///Users/roshanoscarsah/.pub-cache/hosted/pub.dev/vector_math-2.1.4",
       "packageUri": "lib/",
       "languageVersion": "2.14"
     },
@@ -50,10 +50,10 @@
       "languageVersion": "3.2"
     }
   ],
-  "generated": "2025-06-20T07:10:31.962586Z",
+  "generated": "2025-06-25T09:16:08.005943Z",
   "generator": "pub",
   "generatorVersion": "3.7.2",
-  "flutterRoot": "file:///Users/webnapp_03/fvm/versions/3.29.3",
+  "flutterRoot": "file:///Users/roshanoscarsah/fvm/versions/3.29.3",
   "flutterVersion": "3.29.3",
-  "pubCache": "file:///Users/webnapp_03/.pub-cache"
+  "pubCache": "file:///Users/roshanoscarsah/.pub-cache"
 }
